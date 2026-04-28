@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pertemuan 6 – colors.xml
+    Skema warna Bina Desa: Biru navy + aksen oranye (sesuai website)
+-->
+<resources>
+    <!-- Base -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Brand (Biru Navy Bina Desa) -->
+    <color name="colorPrimary">#2563EB</color>
+    <color name="colorPrimaryDark">#1E3A8A</color>
+    <color name="colorPrimaryLight">#BFDBFE</color>
+
+    <!-- Sidebar Navy -->
+    <color name="colorNavy">#1E2A45</color>
+    <color name="colorNavyDark">#111827</color>
+
+    <!-- Accent (Oranye Bina Desa) -->
+    <color name="colorAccent">#F59E0B</color>
+    <color name="colorAccentDark">#D97706</color>
+    <color name="colorAccentLight">#FDE68A</color>
+
+    <!-- Background & Surface -->
+    <color name="colorBackground">#F1F5F9</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorCard">#FFFFFF</color>
+    <color name="colorLogoutCard">#FFF7ED</color>
+    <color name="colorBinaDesaCard">#EFF6FF</color>
+
+    <!-- Input Fields -->
+    <color name="colorInputBg">#EFF6FF</color>
+    <color name="colorInputBorder">#BFDBFE</color>
+
+    <!-- Typography -->
+    <color name="colorTextPrimary">#0F172A</color>
+    <color name="colorTextSecondary">#334155</color>
+    <color name="colorTextHint">#94A3B8</color>
+
+    <!-- Divider -->
+    <color name="colorDivider">#E2E8F0</color>
+
+    <!-- Hero Banner Backgrounds -->
+    <color name="colorHero1">#1E3A8A</color>
+    <color name="colorHero2">#4E342E</color>
+
+    <!-- Status -->
+    <color name="colorSuccess">#10B981</color>
+    <color name="colorWarning">#F59E0B</color>
+    <color name="colorError">#EF4444</color>
+</resources>

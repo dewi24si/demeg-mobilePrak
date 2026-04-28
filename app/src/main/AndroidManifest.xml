@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pertemuan 6 – AndroidManifest.xml
+    Perubahan:
+      ✅ INTERNET permission (untuk WebView)
+      ✅ SplashActivity sebagai LAUNCHER
+      ✅ LoginActivity (pertemuan_3/MainActivity) bukan lagi launcher
+      ✅ Daftarkan WebViewActivity
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ── Permission: Internet untuk WebView ── -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.Demegflower">
+
+        <!-- ════════════════════════════════════════════════
+             PERTEMUAN 6 – LAUNCHER: SplashActivity
+             ════════════════════════════════════════════════ -->
+        <activity
+            android:name=".pertemuan_6.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Demegflower">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Pertemuan 6: WebViewActivity -->
+        <activity
+            android:name=".pertemuan_6.WebViewActivity"
+            android:exported="false" />
+
+        <!-- ════════════════════════════════════════════════
+             PERTEMUAN 3 – Login
+             ════════════════════════════════════════════════ -->
+        <activity
+            android:name=".pertemuan_3.MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Pertemuan 3: WelcomeActivity -->
+        <activity
+            android:name=".pertemuan_3.WelcomeActivity"
+            android:exported="false" />
+
+        <!-- ════════════════════════════════════════════════
+             PERTEMUAN 4
+             ════════════════════════════════════════════════ -->
+
+        <!-- Dashboard -->
+        <activity
+            android:name=".pertemuan_4.DashboardActivity"
+            android:exported="false" />
+
+        <!-- Rumus Bangun Ruang -->
+        <activity
+            android:name=".pertemuan_4.BangunRuangActivity"
+            android:exported="false" />
+
+        <!-- Custom Page 1 -->
+        <activity
+            android:name=".pertemuan_4.CustomActivity1"
+            android:exported="false" />
+
+        <!-- Custom Page 2 -->
+        <activity
+            android:name=".pertemuan_4.CustomActivity2"
+            android:exported="false" />
+
+        <!-- ════════════════════════════════════════════════
+             PERTEMUAN 2
+             ════════════════════════════════════════════════ -->
+        <activity
+            android:name=".pertemuan_2.MainActivity"
+            android:exported="false" />
+
+        <!-- Main (default) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

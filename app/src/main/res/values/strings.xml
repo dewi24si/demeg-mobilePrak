@@ -1,0 +1,36 @@
+<resources>
+    <!-- ── App ──────────────────────────────────────────────── -->
+    <string name="app_name">Bina Desa</string>
+
+    <!-- ── Pertemuan 3: Login screen strings ────────────────── -->
+    <string name="login_app_name">Bina Desa</string>
+    <string name="login_subtitle">Sistem Pengaduan Masyarakat</string>
+    <string name="login_desc">Masuk untuk melanjutkan</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="hint_username">Masukkan username</string>
+    <string name="hint_password">Masukkan password</string>
+    <string name="btn_login">Masuk</string>
+    <string name="text_forgot">Lupa Password?</string>
+    <string name="text_no_account">Belum punya akun?</string>
+    <string name="text_register">Daftar Sekarang</string>
+
+    <!-- ── Pertemuan 3: Welcome screen strings ───────────────── -->
+    <string name="welcome_title">Selamat Datang!</string>
+    <string name="welcome_subtitle">Bina Desa</string>
+    <string name="welcome_message">Anda berhasil masuk ke aplikasi Bina Desa. Mulai jelajahi fitur-fitur yang tersedia.</string>
+    <string name="welcome_tagline">Bersama membangun desa yang lebih baik 🌿</string>
+    <string name="btn_explore">Jelajahi</string>
+    <string name="btn_logout">Keluar</string>
+
+    <!-- ── Login validation ──────────────────────────────────── -->
+    <string name="error_username_empty">Username tidak boleh kosong</string>
+    <string name="error_password_empty">Password tidak boleh kosong</string>
+    <string name="error_password_short">Password minimal 6 karakter</string>
+    <string name="toast_login_success">Login berhasil! Selamat datang 🎉</string>
+
+    <!-- ── Pertemuan 6: Toolbar titles ──────────────────────── -->
+    <string name="toolbar_dashboard_title">Bina Desa</string>
+    <string name="toolbar_webview_title">Website Bina Desa</string>
+    <string name="toolbar_menu_webview">Website Bina Desa</string>
+</resources>

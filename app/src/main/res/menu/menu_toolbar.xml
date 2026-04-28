@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+        Pertemuan 6 – Menu Toolbar
+        Tampil di Toolbar semua activity kecuali SplashScreen & LoginActivity
+    -->
+    <item
+        android:id="@+id/action_webview"
+        android:title="Website Bina Desa"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        app:showAsAction="ifRoom|withText" />
+
+</menu>
