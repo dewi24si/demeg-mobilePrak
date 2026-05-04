@@ -5,18 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.example.demeg_flower.BaseActivity
 import com.example.demeg_flower.databinding.ActivitySplashBinding
-import com.example.demeg_flower.pertemuan_3.MainActivity
-import com.example.demeg_flower.pertemuan_4.DashboardActivity
 
-/**
- * Pertemuan 6 – SplashActivity
- * Launcher utama aplikasi Bina Desa.
- *
- * Alur:
- *   isLogin = true  → langsung ke DashboardActivity
- *   isLogin = false → ke LoginActivity (pertemuan_3/MainActivity)
- */
 class SplashActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashBinding
@@ -37,13 +28,13 @@ class SplashActivity : AppCompatActivity() {
 
     private fun navigateFromSplash() {
         val intent = if (PrefHelper.isLogin(this)) {
-            // Sudah login → langsung ke Dashboard
-            Intent(this, DashboardActivity::class.java).apply {
-                putExtra(DashboardActivity.EXTRA_USERNAME, PrefHelper.getUsername(this@SplashActivity))
+            // Sudah login → langsung ke BaseActivity
+            Intent(this, BaseActivity::class.java).apply {
+                putExtra("extra_username", PrefHelper.getUsername(this@SplashActivity))
             }
         } else {
             // Belum login → ke halaman Login
-            Intent(this, MainActivity::class.java)
+            Intent(this, com.example.demeg_flower.pertemuan_3.MainActivity::class.java)
         }
 
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

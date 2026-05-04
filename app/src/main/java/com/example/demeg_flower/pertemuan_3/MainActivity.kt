@@ -4,17 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.demeg_flower.BaseActivity
 import com.example.demeg_flower.databinding.ActivityMain3Binding
-import com.example.demeg_flower.pertemuan_4.DashboardActivity
 import com.example.demeg_flower.pertemuan_6.PrefHelper
 
-/**
- * Pertemuan 3 – LoginActivity (diperbarui untuk Pertemuan 6)
- *
- * Perubahan Pertemuan 6:
- *   ✅ Simpan SharedPreferences isLogin = true saat login berhasil
- *   ✅ Simpan username ke SharedPreferences
- */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMain3Binding
@@ -62,18 +55,14 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        Toast.makeText(
-            this,
-            getString(com.example.demeg_flower.R.string.toast_login_success),
-            Toast.LENGTH_SHORT
-        ).show()
+        Toast.makeText(this, getString(com.example.demeg_flower.R.string.toast_login_success), Toast.LENGTH_SHORT).show()
 
-        // ── Pertemuan 6: Simpan status login ke SharedPreferences ──
+        // Simpan status login
         PrefHelper.setLogin(this, username)
 
-        // ── Arahkan ke DashboardActivity ──
-        val intent = Intent(this, DashboardActivity::class.java)
-        intent.putExtra(DashboardActivity.EXTRA_USERNAME, username)
+        // Arahkan ke BaseActivity (menggantikan DashboardActivity)
+        val intent = Intent(this, BaseActivity::class.java)
+        intent.putExtra("extra_username", username)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
         finish()
