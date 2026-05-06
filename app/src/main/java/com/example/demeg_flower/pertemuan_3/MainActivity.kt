@@ -30,8 +30,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Fitur reset password segera hadir 🔧", Toast.LENGTH_SHORT).show()
         }
 
+        // Quiz B – navigasi ke halaman Registrasi
         binding.tvRegister.setOnClickListener {
-            Toast.makeText(this, "Fitur registrasi segera hadir ✨", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
@@ -55,12 +56,29 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        // ── Quiz B: 2 rule login ─────────────────────────────────
+        // Rule 1: username == password
+        val rule1 = username == password
+
+        // Rule 2: cocok dengan data registrasi di SharedPreferences
+        val regUsername = PrefHelper.getRegisteredUsername(this)
+        val regPassword = PrefHelper.getRegisteredPassword(this)
+        val rule2 = PrefHelper.hasRegisteredUser(this)
+                && username == regUsername
+                && password == regPassword
+
+        if (!rule1 && !rule2) {
+            binding.etPassword.error = "Username atau password salah"
+            binding.etPassword.requestFocus()
+            return
+        }
+
         Toast.makeText(this, getString(com.example.demeg_flower.R.string.toast_login_success), Toast.LENGTH_SHORT).show()
 
         // Simpan status login
         PrefHelper.setLogin(this, username)
 
-        // Arahkan ke BaseActivity (menggantikan DashboardActivity)
+        // Arahkan ke BaseActivity
         val intent = Intent(this, BaseActivity::class.java)
         intent.putExtra("extra_username", username)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

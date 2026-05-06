@@ -45,6 +45,18 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Quiz B: Registrasi -->
+        <activity
+            android:name=".pertemuan_3.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Quiz B: Verifikasi OTP -->
+        <activity
+            android:name=".pertemuan_3.VerificationActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Pertemuan 3: WelcomeActivity -->
         <activity
             android:name=".pertemuan_3.WelcomeActivity"

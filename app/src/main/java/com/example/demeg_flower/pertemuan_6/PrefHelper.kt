@@ -12,6 +12,13 @@ object PrefHelper {
     private const val KEY_IS_LOGIN = "isLogin"
     private const val KEY_USERNAME = "saved_username"
 
+    // ── Quiz B: kunci data registrasi ────────────────────────────
+    private const val KEY_REG_NAME     = "reg_nama"
+    private const val KEY_REG_PHONE    = "reg_phone"
+    private const val KEY_REG_USERNAME = "reg_username"
+    private const val KEY_REG_PASSWORD = "reg_password"
+    private const val KEY_REG_EXISTS   = "reg_exists"
+
     /** Simpan status login dan username ke SharedPreferences */
     fun setLogin(context: Context, username: String) {
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
@@ -39,4 +46,39 @@ object PrefHelper {
     fun getUsername(context: Context): String =
         context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
             .getString(KEY_USERNAME, "Pengguna") ?: "Pengguna"
+
+    // ── Quiz B: Simpan data registrasi ───────────────────────────
+
+    /** Simpan data user yang baru registrasi setelah OTP verified */
+    fun saveRegisteredUser(
+        context: Context,
+        nama: String,
+        phone: String,
+        username: String,
+        password: String
+    ) {
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            .edit()
+            .putString(KEY_REG_NAME, nama)
+            .putString(KEY_REG_PHONE, phone)
+            .putString(KEY_REG_USERNAME, username)
+            .putString(KEY_REG_PASSWORD, password)
+            .putBoolean(KEY_REG_EXISTS, true)
+            .apply()
+    }
+
+    /** Cek apakah sudah ada akun yang pernah registrasi */
+    fun hasRegisteredUser(context: Context): Boolean =
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            .getBoolean(KEY_REG_EXISTS, false)
+
+    /** Ambil username hasil registrasi */
+    fun getRegisteredUsername(context: Context): String =
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_REG_USERNAME, "") ?: ""
+
+    /** Ambil password hasil registrasi */
+    fun getRegisteredPassword(context: Context): String =
+        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            .getString(KEY_REG_PASSWORD, "") ?: ""
 }
