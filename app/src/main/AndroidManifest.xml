@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Pertemuan 7 – AndroidManifest.xml
+    Pertemuan 9 – AndroidManifest.xml
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -33,6 +33,12 @@
         <activity
             android:name=".BaseActivity"
             android:exported="false" />
+
+        <!-- Pertemuan 9: NinthActivity -->
+        <activity
+            android:name=".pertemuan_9.NinthActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <!-- Pertemuan 6: WebViewActivity -->
         <activity

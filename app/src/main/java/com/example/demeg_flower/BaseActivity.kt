@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.demeg_flower.Home.HomeFragment
 import com.example.demeg_flower.about.AboutFragment
 import com.example.demeg_flower.databinding.ActivityBaseBinding
+import com.example.demeg_flower.info.InfoFragment
 import com.example.demeg_flower.profile.ProfileFragment
 
 class BaseActivity : AppCompatActivity() {
@@ -17,10 +18,8 @@ class BaseActivity : AppCompatActivity() {
         binding = ActivityBaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Ambil username dari intent (dikirim dari SplashActivity)
         val username = intent.getStringExtra("extra_username") ?: "Pengguna"
 
-        // HomeFragment sebagai fragment default
         replaceFragment(HomeFragment.newInstance(username))
 
         binding.bottomNavView.setOnItemSelectedListener {
@@ -35,6 +34,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.profile -> {
                     replaceFragment(ProfileFragment())
+                    true
+                }
+                R.id.info -> {
+                    replaceFragment(InfoFragment())
                     true
                 }
                 else -> false

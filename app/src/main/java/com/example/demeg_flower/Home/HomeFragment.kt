@@ -14,6 +14,7 @@ import com.example.demeg_flower.pertemuan_4.CustomActivity1
 import com.example.demeg_flower.pertemuan_4.CustomActivity2
 import com.example.demeg_flower.pertemuan_6.PrefHelper
 import com.example.demeg_flower.pertemuan_6.WebViewActivity
+import com.example.demeg_flower.pertemuan_9.NinthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -88,6 +89,11 @@ class HomeFragment : Fragment() {
         // Tombol Website Bina Desa
         binding.btnBinaDesa.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
+        }
+
+        // Tombol Pertemuan 9 – Filter Pengaduan
+        binding.btnPertemuan9.setOnClickListener {
+            startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
         // Tombol Logout
