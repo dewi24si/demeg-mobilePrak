@@ -40,6 +40,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Pertemuan 10: TenthActivity (TabLayout + RecyclerView) -->
+        <activity
+            android:name=".pertemuan_10.TenthActivity"
+            android:exported="false" />
+
         <!-- Pertemuan 6: WebViewActivity -->
         <activity
             android:name=".pertemuan_6.WebViewActivity"

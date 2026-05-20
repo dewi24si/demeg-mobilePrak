@@ -15,6 +15,7 @@ import com.example.demeg_flower.pertemuan_4.CustomActivity2
 import com.example.demeg_flower.pertemuan_6.PrefHelper
 import com.example.demeg_flower.pertemuan_6.WebViewActivity
 import com.example.demeg_flower.pertemuan_9.NinthActivity
+import com.example.demeg_flower.pertemuan_10.TenthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
@@ -94,6 +95,11 @@ class HomeFragment : Fragment() {
         // Tombol Pertemuan 9 – Filter Pengaduan
         binding.btnPertemuan9.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
+        }
+
+        // Tombol Pertemuan 10 – TabLayout & RecyclerView
+        binding.btnPertemuan10.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
         // Tombol Logout
