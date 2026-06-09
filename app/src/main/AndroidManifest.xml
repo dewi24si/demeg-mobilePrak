@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Pertemuan 9 – AndroidManifest.xml
--->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -28,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Onboarding -->
+        <activity
+            android:name=".onboarding.OnboardingActivity"
+            android:exported="false" />
 
         <!-- Pertemuan 7: BaseActivity (BottomNavigation) -->
         <activity
@@ -99,5 +101,4 @@
             android:exported="false" />
 
     </application>
-
 </manifest>

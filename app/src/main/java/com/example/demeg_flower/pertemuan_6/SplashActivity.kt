@@ -7,6 +7,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demeg_flower.BaseActivity
 import com.example.demeg_flower.databinding.ActivitySplashBinding
+import com.example.demeg_flower.onboarding.OnboardingActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -27,14 +28,21 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun navigateFromSplash() {
-        val intent = if (PrefHelper.isLogin(this)) {
-            // Sudah login → langsung ke BaseActivity
-            Intent(this, BaseActivity::class.java).apply {
-                putExtra("extra_username", PrefHelper.getUsername(this@SplashActivity))
+        val intent = when {
+            // Belum pernah onboarding → tampilkan onboarding dulu
+            !PrefHelper.isOnboardingDone(this) -> {
+                Intent(this, OnboardingActivity::class.java)
             }
-        } else {
-            // Belum login → ke halaman Login
-            Intent(this, com.example.demeg_flower.pertemuan_3.MainActivity::class.java)
+            // Sudah onboarding & sudah login → ke Home
+            PrefHelper.isLogin(this) -> {
+                Intent(this, BaseActivity::class.java).apply {
+                    putExtra("extra_username", PrefHelper.getUsername(this@SplashActivity))
+                }
+            }
+            // Sudah onboarding, belum login → ke Login
+            else -> {
+                Intent(this, com.example.demeg_flower.pertemuan_3.MainActivity::class.java)
+            }
         }
 
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
