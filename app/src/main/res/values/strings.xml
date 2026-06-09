@@ -6,6 +6,7 @@
     <string name="toolbar_dashboard_title">Bina Desa</string>
     <string name="toolbar_info_title">Informasi Desa</string>
     <string name="toolbar_webview_title">Website Bina Desa</string>
+    <string name="toolbar_tenth_title">Pengaduan Desa</string>
 
     <!-- Login screen (activity_main3.xml) -->
     <string name="label_username">Username</string>

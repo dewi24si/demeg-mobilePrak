@@ -5,14 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demeg_flower.R
-import com.example.demeg_flower.Home.news.NewsAdapter
-import com.example.demeg_flower.data.api.NewsApiClient
 import com.example.demeg_flower.databinding.FragmentHomeBinding
 import com.example.demeg_flower.pertemuan_4.BangunRuangActivity
 import com.example.demeg_flower.pertemuan_4.CustomActivity1
@@ -22,12 +17,12 @@ import com.example.demeg_flower.pertemuan_6.WebViewActivity
 import com.example.demeg_flower.pertemuan_9.NinthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
     private var username: String = "Pengguna"
 
     companion object {
@@ -58,60 +53,52 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Setup Toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.toolbar_dashboard_title)
         }
 
+        // Tampilkan greeting
         binding.tvGreeting.text = "Halo, $username! 👋"
 
+        // Tombol Bangun Ruang
         binding.btnBangunRuang.setOnClickListener {
-            startActivity(Intent(requireContext(), BangunRuangActivity::class.java).apply {
-                putExtra("extra_page_title", "Rumus Bangun Ruang")
-                putExtra("extra_page_desc", "Kumpulan rumus volume & luas permukaan bangun ruang tiga dimensi.")
-            })
+            val intent = Intent(requireContext(), BangunRuangActivity::class.java)
+            intent.putExtra("extra_page_title", "Rumus Bangun Ruang")
+            intent.putExtra("extra_page_desc", "Kumpulan rumus volume & luas permukaan bangun ruang tiga dimensi.")
+            startActivity(intent)
         }
 
+        // Tombol Custom 1 – Bunga Anggrek
         binding.btnCustom1.setOnClickListener {
-            startActivity(Intent(requireContext(), CustomActivity1::class.java).apply {
-                putExtra("extra_page_title", "Bunga Anggrek")
-                putExtra("extra_page_desc", "Anggrek adalah salah satu keluarga tanaman berbunga terbesar dan paling beragam di dunia.")
-            })
+            val intent = Intent(requireContext(), CustomActivity1::class.java)
+            intent.putExtra("extra_page_title", "Bunga Anggrek")
+            intent.putExtra("extra_page_desc", "Anggrek adalah salah satu keluarga tanaman berbunga terbesar dan paling beragam di dunia.")
+            startActivity(intent)
         }
 
+        // Tombol Custom 2 – Bunga Mawar
         binding.btnCustom2.setOnClickListener {
-            startActivity(Intent(requireContext(), CustomActivity2::class.java).apply {
-                putExtra("extra_page_title", "Bunga Mawar")
-                putExtra("extra_page_desc", "Mawar adalah simbol cinta dan keindahan yang dikenal di seluruh penjuru dunia.")
-            })
+            val intent = Intent(requireContext(), CustomActivity2::class.java)
+            intent.putExtra("extra_page_title", "Bunga Mawar")
+            intent.putExtra("extra_page_desc", "Mawar adalah simbol cinta dan keindahan yang dikenal di seluruh penjuru dunia.")
+            startActivity(intent)
         }
 
+        // Tombol Website Bina Desa
         binding.btnBinaDesa.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
+        // Tombol Pertemuan 9 – Filter Pengaduan
         binding.btnPertemuan9.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
+        // Tombol Logout
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
-        }
-
-        loadNews()
-    }
-
-    private fun loadNews() {
-        lifecycleScope.launch {
-            try {
-                val response = NewsApiClient.apiService.getTopHeadlines()
-                val adapter = NewsAdapter(response.articles)
-                binding.rvNews.adapter = adapter
-                binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
-                binding.rvNews.isNestedScrollingEnabled = false
-            } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Gagal memuat berita: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 

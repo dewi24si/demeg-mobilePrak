@@ -59,6 +59,9 @@ dependencies {
     // DotsIndicator
     implementation("com.tbuonomo:dotsindicator:5.1.0")
 
+    // Pertemuan 10: RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
