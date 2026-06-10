@@ -22,12 +22,22 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ListView
-        android:id="@+id/listInfoItems"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvWarga"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/colorDivider"
-        android:dividerHeight="1dp"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddWarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah Warga"
+        android:src="@drawable/ic_add"
+        app:backgroundTint="@color/colorAccent" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -42,7 +42,7 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Pertemuan 10: TenthActivity (TabLayout + RecyclerView) -->
+        <!-- Pertemuan 10: TenthActivity -->
         <activity
             android:name=".pertemuan_10.TenthActivity"
             android:exported="false" />
@@ -58,52 +58,55 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Quiz B: Registrasi -->
         <activity
             android:name=".pertemuan_3.RegisterActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Quiz B: Verifikasi OTP -->
         <activity
             android:name=".pertemuan_3.VerificationActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
-        <!-- Pertemuan 3: WelcomeActivity -->
         <activity
             android:name=".pertemuan_3.WelcomeActivity"
             android:exported="false" />
 
-        <!-- Pertemuan 4: Dashboard -->
         <activity
             android:name=".pertemuan_4.DashboardActivity"
             android:exported="false" />
 
-        <!-- Pertemuan 4: Bangun Ruang -->
         <activity
             android:name=".pertemuan_4.BangunRuangActivity"
             android:exported="false" />
 
-        <!-- Pertemuan 4: Custom 1 -->
         <activity
             android:name=".pertemuan_4.CustomActivity1"
             android:exported="false" />
 
-        <!-- Pertemuan 4: Custom 2 -->
         <activity
             android:name=".pertemuan_4.CustomActivity2"
             android:exported="false" />
 
-        <!-- Pertemuan 2 -->
         <activity
             android:name=".pertemuan_2.MainActivity"
             android:exported="false" />
 
-        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
+        <!-- Pertemuan 12: Room - Info Warga Form -->
+        <activity
+            android:name=".info.WargaFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Pertemuan 12: Room - Pengumuman Form -->
+        <activity
+            android:name=".pengumuman.PengumumanFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
     </application>
 </manifest>

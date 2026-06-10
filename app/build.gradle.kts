@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -59,8 +60,17 @@ dependencies {
     // DotsIndicator
     implementation("com.tbuonomo:dotsindicator:5.1.0")
 
-    // Pertemuan 10: RecyclerView
+    // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // Room Database
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+
+    // Lifecycle (for lifecycleScope in Fragment)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

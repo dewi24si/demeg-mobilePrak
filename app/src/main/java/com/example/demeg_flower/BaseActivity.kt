@@ -7,6 +7,7 @@ import com.example.demeg_flower.Home.HomeFragment
 import com.example.demeg_flower.about.AboutFragment
 import com.example.demeg_flower.databinding.ActivityBaseBinding
 import com.example.demeg_flower.info.InfoFragment
+import com.example.demeg_flower.pengumuman.PengumumanFragment
 import com.example.demeg_flower.profile.ProfileFragment
 
 class BaseActivity : AppCompatActivity() {
@@ -38,6 +39,10 @@ class BaseActivity : AppCompatActivity() {
                 }
                 R.id.info -> {
                     replaceFragment(InfoFragment())
+                    true
+                }
+                R.id.pengumuman -> {
+                    replaceFragment(PengumumanFragment())
                     true
                 }
                 else -> false

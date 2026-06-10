@@ -6,26 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demeg_flower.R
+import com.example.demeg_flower.data.AppDatabase
+import com.example.demeg_flower.data.entity.WargaEntity
 import com.example.demeg_flower.databinding.FragmentInfoBinding
+import kotlinx.coroutines.launch
 
 class InfoFragment : Fragment() {
 
     private var _binding: FragmentInfoBinding? = null
     private val binding get() = _binding!!
 
-    private val infoList = listOf(
-        InfoModel("Pak Joko Susanto", "Kepala Desa", "https://avatar.iran.liara.run/public/1"),
-        InfoModel("Bu Sari Wulandari", "Sekretaris Desa", "https://avatar.iran.liara.run/public/2"),
-        InfoModel("Pak Budi Hartono", "Bendahara Desa", "https://avatar.iran.liara.run/public/3"),
-        InfoModel("Bu Rina Kusuma", "Ketua PKK", "https://avatar.iran.liara.run/public/4"),
-        InfoModel("Pak Agus Setiawan", "Ketua RT 01", "https://avatar.iran.liara.run/public/5"),
-        InfoModel("Bu Dewi Anggraini", "Ketua RT 02", "https://avatar.iran.liara.run/public/6"),
-        InfoModel("Pak Hendra Wijaya", "Ketua RT 03", "https://avatar.iran.liara.run/public/7"),
-        InfoModel("Bu Ani Rahayu", "Ketua Posyandu", "https://avatar.iran.liara.run/public/8"),
-        InfoModel("Pak Dodi Santoso", "Ketua Karang Taruna", "https://avatar.iran.liara.run/public/9"),
-        InfoModel("Bu Fitri Handayani", "Kader Kesehatan", "https://avatar.iran.liara.run/public/10")
-    )
+    private lateinit var adapter: WargaAdapter
+    private lateinit var db: AppDatabase
+    private val wargaList = mutableListOf<WargaEntity>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,24 +35,50 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup Toolbar
+        // Toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.toolbar_info_title)
         }
 
-        // Custom Adapter
-        val adapter = InfoAdapter(requireContext(), infoList)
-        binding.listInfoItems.adapter = adapter
+        // Init DB & Adapter
+        db = AppDatabase.getInstance(requireContext())
+        adapter = WargaAdapter(wargaList, this)
 
-        // onClick item
-        binding.listInfoItems.setOnItemClickListener { _, _, position, _ ->
-            val item = infoList[position]
-            com.google.android.material.snackbar.Snackbar.make(
-                binding.root,
-                "Info: ${item.namaWarga} (${item.keterangan})",
-                com.google.android.material.snackbar.Snackbar.LENGTH_SHORT
-            ).show()
+        binding.rvWarga.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvWarga.adapter = adapter
+        binding.rvWarga.addItemDecoration(
+            DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        )
+
+        // FAB -> WargaFormActivity
+        binding.fabAddWarga.setOnClickListener {
+            startActivity(
+                android.content.Intent(requireContext(), WargaFormActivity::class.java)
+            )
+        }
+
+        fetchWarga()
+    }
+
+    private fun fetchWarga() {
+        lifecycleScope.launch {
+            val data = db.wargaDao().getAll()
+            wargaList.clear()
+            wargaList.addAll(data)
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchWarga()
+    }
+
+    fun deleteWarga(warga: WargaEntity) {
+        lifecycleScope.launch {
+            db.wargaDao().delete(warga)
+            fetchWarga()
         }
     }
 

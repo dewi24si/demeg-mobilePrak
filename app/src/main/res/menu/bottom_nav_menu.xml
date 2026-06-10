@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_nav_info"
         android:title="Info" />
 
+    <item
+        android:id="@+id/pengumuman"
+        android:icon="@drawable/ic_nav_pengumuman"
+        android:title="Pengumuman" />
+
 </menu>
