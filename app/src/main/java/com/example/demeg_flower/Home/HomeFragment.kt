@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.demeg_flower.R
+import com.example.demeg_flower.Home.news.NewsAdapter
+import com.example.demeg_flower.data.api.NewsApiClient
 import com.example.demeg_flower.databinding.FragmentHomeBinding
 import com.example.demeg_flower.pertemuan_4.BangunRuangActivity
 import com.example.demeg_flower.pertemuan_4.CustomActivity1
@@ -15,8 +20,10 @@ import com.example.demeg_flower.pertemuan_4.CustomActivity2
 import com.example.demeg_flower.pertemuan_6.PrefHelper
 import com.example.demeg_flower.pertemuan_6.WebViewActivity
 import com.example.demeg_flower.pertemuan_9.NinthActivity
+import com.example.demeg_flower.pertemuan_10.TenthActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -53,16 +60,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup Toolbar
         (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             title = getString(R.string.toolbar_dashboard_title)
         }
 
-        // Tampilkan greeting
         binding.tvGreeting.text = "Halo, $username! 👋"
 
-        // Tombol Bangun Ruang
         binding.btnBangunRuang.setOnClickListener {
             val intent = Intent(requireContext(), BangunRuangActivity::class.java)
             intent.putExtra("extra_page_title", "Rumus Bangun Ruang")
@@ -70,7 +74,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tombol Custom 1 – Bunga Anggrek
         binding.btnCustom1.setOnClickListener {
             val intent = Intent(requireContext(), CustomActivity1::class.java)
             intent.putExtra("extra_page_title", "Bunga Anggrek")
@@ -78,7 +81,6 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tombol Custom 2 – Bunga Mawar
         binding.btnCustom2.setOnClickListener {
             val intent = Intent(requireContext(), CustomActivity2::class.java)
             intent.putExtra("extra_page_title", "Bunga Mawar")
@@ -86,19 +88,36 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Tombol Website Bina Desa
         binding.btnBinaDesa.setOnClickListener {
             startActivity(Intent(requireContext(), WebViewActivity::class.java))
         }
 
-        // Tombol Pertemuan 9 – Filter Pengaduan
         binding.btnPertemuan9.setOnClickListener {
             startActivity(Intent(requireContext(), NinthActivity::class.java))
         }
 
-        // Tombol Logout
+        binding.btnPertemuan10.setOnClickListener {
+            startActivity(Intent(requireContext(), TenthActivity::class.java))
+        }
+
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
+        }
+
+        loadNews()
+    }
+
+    private fun loadNews() {
+        lifecycleScope.launch {
+            try {
+                val response = NewsApiClient.apiService.getTopHeadlines()
+                val adapter = NewsAdapter(response.articles)
+                binding.rvNews.adapter = adapter
+                binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
+                binding.rvNews.isNestedScrollingEnabled = false
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Gagal memuat berita", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
