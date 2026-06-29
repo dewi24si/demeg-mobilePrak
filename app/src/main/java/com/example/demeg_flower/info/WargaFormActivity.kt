@@ -1,12 +1,15 @@
 package com.example.demeg_flower.info
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.example.demeg_flower.BaseActivity
 import com.example.demeg_flower.data.AppDatabase
 import com.example.demeg_flower.data.entity.WargaEntity
 import com.example.demeg_flower.databinding.ActivityWargaFormBinding
+import com.example.demeg_flower.utils.NotificationHelper
 import kotlinx.coroutines.launch
 
 class WargaFormActivity : AppCompatActivity() {
@@ -44,6 +47,19 @@ class WargaFormActivity : AppCompatActivity() {
                         avatarUrl = avatarUrl
                     )
                     db.wargaDao().insert(warga)
+
+                    // Notifikasi setelah simpan warga
+                    val intent = Intent(this@WargaFormActivity, BaseActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        putExtra("navigate_to", "info")
+                    }
+                    NotificationHelper.showNotification(
+                        context = this@WargaFormActivity,
+                        title = "Data Warga Tersimpan",
+                        message = "$nama berhasil ditambahkan sebagai $jabatan",
+                        intent = intent
+                    )
+
                     finish()
                 }
             } else {

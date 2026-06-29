@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.demeg_flower.BaseActivity
 import com.example.demeg_flower.databinding.ActivityMain3Binding
 import com.example.demeg_flower.pertemuan_6.PrefHelper
+import com.example.demeg_flower.utils.NotificationHelper
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Fitur reset password segera hadir 🔧", Toast.LENGTH_SHORT).show()
         }
 
-        // Quiz B – navigasi ke halaman Registrasi
         binding.tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
@@ -56,11 +56,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        // ── Quiz B: 2 rule login ─────────────────────────────────
-        // Rule 1: username == password
         val rule1 = username == password
 
-        // Rule 2: cocok dengan data registrasi di SharedPreferences
         val regUsername = PrefHelper.getRegisteredUsername(this)
         val regPassword = PrefHelper.getRegisteredPassword(this)
         val rule2 = PrefHelper.hasRegisteredUser(this)
@@ -75,10 +72,20 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, getString(com.example.demeg_flower.R.string.toast_login_success), Toast.LENGTH_SHORT).show()
 
-        // Simpan status login
         PrefHelper.setLogin(this, username)
 
-        // Arahkan ke BaseActivity
+        // Notifikasi selamat datang setelah login berhasil
+        val notifIntent = Intent(this, BaseActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            putExtra("extra_username", username)
+        }
+        NotificationHelper.showNotification(
+            context = this,
+            title = "Selamat Datang, $username! 👋",
+            message = "Kamu berhasil masuk ke aplikasi Bina Desa. Tap untuk lihat dashboard.",
+            intent = notifIntent
+        )
+
         val intent = Intent(this, BaseActivity::class.java)
         intent.putExtra("extra_username", username)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

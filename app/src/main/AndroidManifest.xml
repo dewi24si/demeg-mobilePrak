@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,11 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Demegflower">
+
+        <!-- ReminderReceiver untuk AlarmManager -->
+        <receiver
+            android:name=".utils.ReminderReceiver"
+            android:exported="false" />
 
         <!-- LAUNCHER: SplashActivity -->
         <activity
