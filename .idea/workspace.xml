@@ -21,10 +21,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4632792a-9e95-4550-b377-ae57cdde6eb0" name="Changes" comment="pertemuan 14 notifikasi">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/demeg_flower/Home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/demeg_flower/Home/HomeFragment.kt" afterDir="false" />
-    </list>
+    <list default="true" id="4632792a-9e95-4550-b377-ae57cdde6eb0" name="Changes" comment="home fragment" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,14 +177,23 @@
       <option name="project" value="LOCAL" />
       <updated>1782752278267</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="home fragment">
+      <option name="closed" value="true" />
+      <created>1782753169378</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1782753169378</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pertemuan 12" />
     <MESSAGE value="pertemuan 12 part 1" />
     <MESSAGE value="pertemuan 14 notifikasi" />
-    <option name="LAST_COMMIT_MESSAGE" value="pertemuan 14 notifikasi" />
+    <MESSAGE value="home fragment" />
+    <option name="LAST_COMMIT_MESSAGE" value="home fragment" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
