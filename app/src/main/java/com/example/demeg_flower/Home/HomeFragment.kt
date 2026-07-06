@@ -100,6 +100,10 @@ class HomeFragment : Fragment() {
             startActivity(Intent(requireContext(), TenthActivity::class.java))
         }
 
+        binding.btnPertemuan13.setOnClickListener {
+            startActivity(Intent(requireContext(), com.example.demeg_flower.pertemuan_13.ThirteenthActivity::class.java))
+        }
+
         binding.btnLogout.setOnClickListener {
             showLogoutDialog()
         }

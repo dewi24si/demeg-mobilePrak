@@ -7,6 +7,12 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
+    <!-- Pertemuan 13: Kamera -->
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,6 +23,17 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Demegflower">
+
+        <!-- Pertemuan 13: FileProvider untuk simpan hasil foto kamera -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- ReminderReceiver untuk AlarmManager -->
         <receiver
@@ -50,9 +67,19 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Pertemuan 9: ListView demo (ArrayAdapter / SimpleAdapter / CustomAdapter) -->
+        <activity android:name=".pertemuan_9.InformasiListActivity" android:exported="false" />
+        <activity android:name=".pertemuan_9.FaqListActivity" android:exported="false" />
+        <activity android:name=".pertemuan_9.KontakListActivity" android:exported="false" />
+
         <!-- Pertemuan 10: TenthActivity -->
         <activity
             android:name=".pertemuan_10.TenthActivity"
+            android:exported="false" />
+
+        <!-- Pertemuan 13: ThirteenthActivity (Kamera, QR Generate, QR Scan) -->
+        <activity
+            android:name=".pertemuan_13.ThirteenthActivity"
             android:exported="false" />
 
         <!-- Pertemuan 6: WebViewActivity -->

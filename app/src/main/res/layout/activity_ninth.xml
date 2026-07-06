@@ -179,6 +179,7 @@
                     app:cornerRadius="8dp" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnInformasi"
                     android:text="Informasi"
                     android:textSize="12sp"
                     android:backgroundTint="@color/colorNavy"
@@ -203,6 +204,7 @@
                     app:cornerRadius="8dp" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnKontak"
                     android:text="Kontak"
                     android:textSize="12sp"
                     android:backgroundTint="@color/colorPrimary"
@@ -211,6 +213,7 @@
                     app:cornerRadius="8dp" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnFaq"
                     android:text="FAQ"
                     android:textSize="12sp"
                     android:backgroundTint="@color/colorNavy"

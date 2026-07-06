@@ -1,5 +1,6 @@
 package com.example.demeg_flower.pertemuan_9
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,17 @@ class NinthActivity : AppCompatActivity() {
         // Reset error saat user mulai ketik
         binding.etSearch.setOnFocusChangeListener { _, _ ->
             binding.textInputLayout.error = null
+        }
+
+        // ===== Pertemuan 9: ListView demo (ArrayAdapter, SimpleAdapter, CustomAdapter) =====
+        binding.btnInformasi.setOnClickListener {
+            startActivity(Intent(this, InformasiListActivity::class.java))
+        }
+        binding.btnFaq.setOnClickListener {
+            startActivity(Intent(this, FaqListActivity::class.java))
+        }
+        binding.btnKontak.setOnClickListener {
+            startActivity(Intent(this, KontakListActivity::class.java))
         }
     }
 

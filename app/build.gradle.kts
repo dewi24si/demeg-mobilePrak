@@ -72,6 +72,20 @@ dependencies {
     // Lifecycle (for lifecycleScope in Fragment)
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
+    // ViewPager2 (dipakai TabLayoutMediator di Pertemuan 10 & 13)
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+
+    // Pertemuan 13: ZXing untuk generate QR Code
+    implementation("com.google.zxing:core:3.5.2")
+
+    // Pertemuan 13: CameraX untuk preview & scan kamera real-time
+    implementation("androidx.camera:camera-camera2:1.3.3")
+    implementation("androidx.camera:camera-lifecycle:1.3.3")
+    implementation("androidx.camera:camera-view:1.3.3")
+
+    // Pertemuan 13: ML Kit Barcode Scanning untuk deteksi QR Code
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

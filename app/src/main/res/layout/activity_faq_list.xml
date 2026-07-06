@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pertemuan 9 – activity_faq_list.xml
+    Demo ListView dengan SimpleAdapter (layout simple_list_item_2 - 2 baris teks: title & desc)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorNavy"
+        app:title="FAQ - Pertanyaan Umum"
+        app:titleTextColor="@color/white"
+        app:navigationIconTint="@color/white"
+        app:popupTheme="@style/ThemeOverlay.Material3.Light" />
+
+    <ListView
+        android:id="@+id/listViewFaq"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp" />
+
+</LinearLayout>
